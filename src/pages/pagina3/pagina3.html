@@ -1,0 +1,24 @@
+
+<ion-header>
+
+  <ion-navbar color= "corporate">
+    <ion-title>{{dependencia.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- this creates a google map on the page with the given lat/lng from -->
+    <!-- the component as the initial center of the map: -->
+    <agm-map [latitude]="dependencia.lat" [longitude]="dependencia.lng" [zoom]= "15">
+      <agm-marker [latitude]="dependencia.lat" [longitude]="dependencia.lng"></agm-marker>
+    </agm-map>
+
+    <h4>Direccion: {{dependencia.direccion}}</h4>
+    <h5>Ciudad: {{dependencia.ciudad}}</h5>
+    <h5>Provincia: {{dependencia.provincia}}</h5>
+    <h6>Latitud: {{dependencia.lat}}</h6>
+    <h6>Longitud: {{dependencia.lng}}</h6>
+
+</ion-content>

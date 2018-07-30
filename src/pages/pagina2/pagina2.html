@@ -1,0 +1,21 @@
+<ion-header>
+
+  <ion-navbar color= "corporate">
+    <ion-title> {{ nclase }} </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+	<ion-list>
+    <button ion-item *ngFor="let item of dependencia | async"
+            [navPush] = "pagina3"
+            [navParams] = "{'item': item }">
+        {{item.nombre}}
+    </button>
+
+
+
+	</ion-list>
+</ion-content>

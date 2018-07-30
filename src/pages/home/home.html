@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar color="corporate">
+    <ion-title item-left >
+      Dependencias UNNE
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)= "salir()" >
+        Salir
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="card-background-page">
+
+  <ion-card>
+    <img src="assets/imgs/facultad.png"/>
+    <div class="card-title">
+      <button id ="academica"
+              class="button0"
+              ion-button
+              color="light"
+              clear
+              (click) = "irPagina2 ( 'academica', 'Academicas' )">
+          Academicas
+      </button>
+    </div>
+
+  </ion-card>
+
+  <ion-card>
+    <img src="assets/imgs/institutos.png"/>
+    <div class="card-title">
+      <button id ="administracion"
+              class="button0"
+              ion-button
+              color="light"
+              clear
+              (click) = "irPagina2 ( 'administrativa','Administrativas' )">
+          Administrativas
+      </button>
+    </div>
+        <div class="card-subtitle">
+        </div>
+  </ion-card>
+
+  <ion-card>
+    <img src="assets/imgs/comedor.png"/>
+    <div class="card-title">
+      <button
+              class="button0"
+              ion-button
+              color="light"
+              clear
+              (click) = "irPagina2 ( 'servicio', 'Servicios' )">
+              Servicios
+      </button>
+    </div>
+        <div class="card-subtitle">
+        </div>
+  </ion-card>
+
+</ion-content>
