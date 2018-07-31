@@ -20,7 +20,7 @@ export class Pagina3Page {
 }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad Pagina3Page');
+    console.log('ionViewDidLoad Pagina3Page');
   }
 
 }
