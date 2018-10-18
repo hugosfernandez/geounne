@@ -22,9 +22,9 @@ export class UbicacionProvider {
 
 
   iniciarGeoLocalizacion(){
-    this.afDB.doc('/dependencias/FM').valueChanges().subscribe( documento => {
-        console.log( documento ) ;
-       });
+    // this.afDB.doc('/dependencias/FM').valueChanges().subscribe( documento => {
+    //     console.log( documento ) ;
+    //    });
 
     this.geolocation.getCurrentPosition().then((resp) => {
       //resp.coords.latitude

@@ -9,16 +9,42 @@
 
 
 <ion-content padding>
-    <!-- this creates a google map on the page with the given lat/lng from -->
-    <!-- the component as the initial center of the map: -->
+    <h5> {{dependencia.nombre}} </h5>
+    <p></p>
+    <p></p>
+    <ion-item-group>
+      <ion-item-divider color="light">Direccion: </ion-item-divider>
+      <ion-item>{{dependencia.direccion}}</ion-item>
+      <ion-item>{{dependencia.ciudad}}, {{dependencia.provincia}}</ion-item>
+    </ion-item-group>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Mail: </ion-item-divider>
+      <ion-item> {{dependencia.mail}} </ion-item>
+    </ion-item-group>
+
+    <p></p>
+    <p></p>
+
     <agm-map [latitude]="dependencia.lat" [longitude]="dependencia.lng" [zoom]= "15">
       <agm-marker [latitude]="dependencia.lat" [longitude]="dependencia.lng"></agm-marker>
     </agm-map>
 
-    <h4>Direccion: {{dependencia.direccion}}</h4>
-    <h5>Ciudad: {{dependencia.ciudad}}</h5>
-    <h5>Provincia: {{dependencia.provincia}}</h5>
-    <h6>Latitud: {{dependencia.lat}}</h6>
-    <h6>Longitud: {{dependencia.lng}}</h6>
+    <p></p>
+    <p></p>
+
+    <button color= "corporate" *ngIf="ocultarEnlace" ion-button icon-start block (click)="openLink()">
+        Página Web
+    </button>
+
+    <button  color= "corporate" *ngIf="ocultarSiu"  ion-button icon-start block (click)="openSiu()">
+        SIU Guarani
+    </button>
+
+    <button   icon-start color= "corporate" ion-button [navPush] = "pagina5" [navParams] = "{'dependencia': dependencia }">
+        <ion-icon name="navigate"></ion-icon>
+        Indicaciones
+    </button>
+
 
 </ion-content>

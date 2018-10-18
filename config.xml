@@ -91,5 +91,9 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>Necesitamos tu ubicación</string>
     </edit-config>
+    <plugin name="cordova-plugin-googleplus" spec="^5.3.0">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.1049179821329-10sb8vvrjtnghq0953rmgbmai5cq7apn" />
+    </plugin>
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
     <engine name="android" spec="6.4.0" />
 </widget>

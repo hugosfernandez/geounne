@@ -7,11 +7,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-searchbar (ionInput)="getItems2($event)" placeholder="Buscar"></ion-searchbar>
 	<ion-list>
     <button ion-item *ngFor="let item of dependencia | async"
-            [navPush] = "pagina3"
-            [navParams] = "{'item': item }">
+              [navPush] = "pagina3"
+              [navParams] = "{'item': item }">
+        <!-- <button ion-item *ngFor="let item of dependenciaList" -->
         {{item.nombre}}
     </button>
 
@@ -19,3 +20,19 @@
 
 	</ion-list>
 </ion-content>
+
+
+ <!--
+ usuario = item
+ usuariosList = dependencia
+
+<ion-searchbar (ionInput)="getItems2($event)" placeholder="Buscar"></ion-searchbar>
+
+  <ion-list>
+      <ion-item *ngFor="let usuario of usuariosList ">
+        <h2><strong class="mayusculass">{{ usuario.nombre }} {{ usuario.apellido }}</strong> </h2>
+        <h2>Telefono: {{ usuario.telefono }}</h2>
+        <h2>Email: {{ usuario.correo }}</h2>
+        <button ion-button clear item-end (click)="detalleUsuario(usuario)">Ver</button>
+      </ion-item>
+  </ion-list> -->

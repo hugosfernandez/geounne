@@ -11,6 +11,9 @@ import { TabsPage } from '../tabs/tabs';
 import { Platform } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 
+import { GooglePlus } from '@ionic-native/google-plus';
+
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -21,9 +24,11 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private afAuth: AngularFireAuth,
-              public usuarioProv: UsuarioProvider,
+              public _usuarioProv: UsuarioProvider,
               private fb: Facebook,
-              private platform: Platform) {
+              private googlePlus: GooglePlus,
+              private platform: Platform
+              ) {
   }
 
   signInWithFacebook() {
@@ -36,7 +41,7 @@ export class LoginPage {
         .then( user => {
                         console.log(user);
 
-                        this.usuarioProv.cargarUsuario(
+                        this._usuarioProv.cargarUsuario(
                                                         user.displayName,
                                                         user.email,
                                                         user.photoURL,
@@ -53,7 +58,7 @@ export class LoginPage {
                         console.log(res);
                         let user= res.user;
 
-        this.usuarioProv.cargarUsuario(
+        this._usuarioProv.cargarUsuario(
                                         user.displayName,
                                         user.email,
                                         user.photoURL,
@@ -65,6 +70,28 @@ export class LoginPage {
                         });
     }
   }
+
+signInWithGoogle() {
+  this.googlePlus.login({
+    'webClientId': '1049179821329-389aktm652iajr4nhdermr7sgqmc24go.apps.googleusercontent.com',
+    'offline': true
+  }).then( res => {
+    firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
+    .then( user => {
+                console.log(user);
+                this._usuarioProv.cargarUsuario(
+                                                user.displayName,
+                                                user.email,
+                                                user.photoURL,
+                                                user.uid,
+                                                'google');
+                this.navCtrl.setRoot(TabsPage);
+    })
+    .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+  }).catch(err => console.error("Error: "+ JSON.stringify(err)));
+}
+
+
 
   signOut() {
     this.afAuth.auth.signOut();

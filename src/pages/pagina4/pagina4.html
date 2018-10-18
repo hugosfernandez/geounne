@@ -1,0 +1,90 @@
+<ion-header>
+
+  <ion-navbar color= "corporate">
+    <ion-title> Nueva Dependencia</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<form [formGroup]="todo" (ngSubmit)="logForm()">
+    <!-- RADIO BUTTON DE LAS CLASES
+     <ion-label stalked> Clase</ion-label>
+        <ion-list radio-group>
+              <ion-item>
+                <ion-label >Administrativa</ion-label>
+                <ion-radio checked="true" value="administrativa" ></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label >Academica</ion-label>
+                <ion-radio value="academica"  ></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label >Servicio</ion-label>
+                <ion-radio value="servicio" ></ion-radio>
+              </ion-item>
+        </ion-list> -->
+
+    <ion-list>
+        <ion-item>
+          <ion-label>Clase</ion-label>
+          <ion-select formControlName= "clase" [(ngModel)]="clase">
+            <ion-option value="administrativa">Administrativa</ion-option>
+            <ion-option value="academica">Academica</ion-option>
+            <ion-option value="servicio">Servicio</ion-option>
+          </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <!-- <ion-item>
+      <ion-label floating>Clase</ion-label>
+      <ion-input type="text" formControlName= "clase" [(ngModel)]="clase"></ion-input>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label floating>Nombre</ion-label>
+      <ion-input type="text" formControlName= "nombre" [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Direccion</ion-label>
+      <ion-input type="text" formControlName= "direccion" [(ngModel)]="direccion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Ciudad</ion-label>
+      <ion-input type="text" formControlName= "ciudad" [(ngModel)]="ciudad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Provincia</ion-label>
+      <ion-input type="text" formControlName= "provincia" [(ngModel)]="provincia"></ion-input>
+    </ion-item>
+</form>
+
+<br>
+<br>
+
+<div #map id="map">
+  <ion-spinner></ion-spinner>
+</div>
+
+<br>
+<br>
+
+  <button  color= "corporate"
+           ion-button type="submit"
+           [disabled]="!todo.valid"
+           (click)="cargar_dependencina(clase, nombre, direccion, ciudad, provincia)">
+           Agregar
+  </button>
+
+  <button color= "corporate"  ion-button (click)="cancelar_form()">
+      Cancelar
+  </button>
+
+
+</ion-content>
